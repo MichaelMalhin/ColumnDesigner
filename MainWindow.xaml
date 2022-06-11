@@ -1,0 +1,431 @@
+﻿<Window x:Class="ColumnDesign.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ColumnDesign"
+        mc:Ignorable="d"
+        Title="Column Designer" Height="650" Width="1200" MinHeight="650" MaxHeight="650" MinWidth="1200" Icon="img/report.png"
+        FontSize="14"
+        ResizeMode="CanResize"
+        >
+    <DockPanel>
+
+        <WrapPanel DockPanel.Dock="Top">
+            <Button Background="White" Height="30" Width="80" Margin="10,5,5,5" Content="Load Data" />
+            <Button Background="White" Height="30" Width="80" Margin="5,5,5,5" Content="Save Data" />
+        </WrapPanel>
+
+        <Grid ShowGridLines="False">
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="400"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Border BorderBrush="Gray" BorderThickness="1" Margin="10" CornerRadius="0">
+                <Grid x:Name="mainPanelGuide" Grid.Column="0" Grid.Row="0" >
+                    <Image x:Name="image" HorizontalAlignment="Left" Height="484" Margin="21,66,0,0" VerticalAlignment="Top" Width="336" Source="img/main_guide.jpg"/>
+                </Grid>
+            </Border>
+
+
+            <Grid x:Name="mainPanelControl" Grid.Column="1" Grid.Row="0" Margin="0,10,10,10">
+                <TabControl x:Name="products">
+                    <TabItem x:Name="tabFactors" Width="120" Height="50">
+                        <TabItem.Header>
+                            <TextBlock TextAlignment="Center">Design Factors</TextBlock>
+                        </TabItem.Header>
+                        <TabItem.Content>
+                            <StackPanel Margin="0,20,0,0">
+                                <GroupBox Header="Design Factors" Margin="10,0,10,0" Padding="0,20,0,20">
+                                    <UniformGrid Rows="2" Columns="3">
+                                        <StackPanel Margin="10">
+                                            <TextBlock>γM0</TextBlock>
+                                            <TextBox x:Name="gamma_m0" Height="30" Margin="0,10,0,0" Text="1.0" VerticalContentAlignment="Center"></TextBox>
+                                        </StackPanel>
+                                        <StackPanel Margin="10">
+                                            <TextBlock>γM1</TextBlock>
+                                            <TextBox x:Name="gamma_m1" Height="30" Margin="0,10,0,0" Text="1.0" VerticalContentAlignment="Center"></TextBox>
+                                        </StackPanel>
+                                        <StackPanel Margin="10">
+                                            <TextBlock>Deflection Limit H/</TextBlock>
+                                            <TextBox x:Name="H_lim" Height="30" Margin="0,10,0,0" Text="300" VerticalContentAlignment="Center"></TextBox>
+                                        </StackPanel>
+                                        <StackPanel Margin="10">
+                                            <TextBlock>Allowed utilization, %</TextBlock>
+                                            <TextBox x:Name="min_unility" Height="30" Margin="0,10,0,0" Text="100" VerticalContentAlignment="Center"></TextBox>
+                                        </StackPanel>
+                                        <StackPanel Margin="10">
+                                        </StackPanel>
+                                        <StackPanel Margin="10">
+                                        </StackPanel>
+                                    </UniformGrid>
+                                </GroupBox>
+                                <GroupBox Header="Optimization Criteria" Margin="10" Padding="0,20,0,20">
+                                    <UniformGrid Rows="2" Columns="3">
+                                        <StackPanel Margin="10">
+                                            <TextBlock>Min Section Width, mm</TextBlock>
+                                            <TextBox x:Name="opt_min_sec_w" Height="30" Margin="0,10,0,0" Text="0" VerticalContentAlignment="Center"></TextBox>
+                                        </StackPanel>
+                                        <StackPanel Margin="10">
+                                            <TextBlock>Min Section Height, mm</TextBlock>
+                                            <TextBox x:Name="opt_min_sec_h" Height="30" Margin="0,10,0,0" Text="0" VerticalContentAlignment="Center"></TextBox>
+                                        </StackPanel>
+                                        <StackPanel Margin="10">
+                                            <TextBlock>Max Weight/Length, kN/m</TextBlock>
+                                            <TextBox x:Name="opt_max_wm" Height="30" Margin="0,10,0,0" Text="1000" VerticalContentAlignment="Center"></TextBox>
+                                        </StackPanel>
+                                        <StackPanel Margin="10">
+                                            <TextBlock>Max Section Width, mm</TextBlock>
+                                            <TextBox x:Name="opt_max_sec_w" Height="30" Margin="0,10,0,0" Text="500" VerticalContentAlignment="Center"></TextBox>
+                                        </StackPanel>
+                                        <StackPanel Margin="10">
+                                            <TextBlock>Max Section Height, mm</TextBlock>
+                                            <TextBox x:Name="opt_max_sec_h" Height="30" Margin="0,10,0,0" Text="500" VerticalContentAlignment="Center"></TextBox>
+                                        </StackPanel>
+                                    </UniformGrid>
+                                </GroupBox>
+                            </StackPanel>
+                        </TabItem.Content>
+                    </TabItem>
+                    <TabItem x:Name="tabMembers" Width="120">
+                        <TabItem.Header>
+                            <TextBlock TextAlignment="Center">Members</TextBlock>
+                        </TabItem.Header>
+                        <TabItem.Content>
+                            <StackPanel Margin="20,20,20,0">
+                                <UniformGrid Rows="1" Columns="5">
+                                    <StackPanel Margin="0,10,0,0">
+                                        <TextBlock>Steel Grade</TextBlock>
+                                        <ComboBox Margin="0,10,0,0" VerticalContentAlignment="Center" x:Name="materialGrade" Height="30" VerticalAlignment="Top">
+                                            <ComboBoxItem Content="S235"></ComboBoxItem>
+                                            <ComboBoxItem Content="S275"></ComboBoxItem>
+                                            <ComboBoxItem Content="S355"></ComboBoxItem>
+                                        </ComboBox>
+                                    </StackPanel>
+                                    <StackPanel>
+                                    </StackPanel>
+                                    <StackPanel>
+                                    </StackPanel>
+                                    <StackPanel Margin="0,10,0,0">
+                                        <Button Margin="0,28,0,0" Grid.Column="2" Grid.Row="0" Height="30" Width="Auto" Click="memberAddBtnFunc">
+                                            <StackPanel Orientation="Horizontal">
+                                                <Image Source="/img/add.png" Height="14"/>
+                                                <TextBlock Text=" Add Member" VerticalAlignment="Center" />
+                                            </StackPanel>
+                                        </Button>
+                                    </StackPanel>
+                                    <StackPanel Margin="10,10,0,0">
+                                        <Button Margin="0,28,0,0" Grid.Column="2" Grid.Row="0" Height="30" Width="Auto">
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text=" Pick in Tekla" VerticalAlignment="Center" />
+                                            </StackPanel>
+                                        </Button>
+                                    </StackPanel>
+                                </UniformGrid>
+                                <Grid Margin="0,30,0,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition Width="17"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Border Grid.Column="0" Grid.Row="0" Background="LightGray" BorderBrush="Gray" BorderThickness="1,1,1,1" Height="50">
+                                        <TextBlock TextAlignment="Center" VerticalAlignment="Center">ID</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="1" Grid.Row="0" x:Name="member_table_H" Background="LightGray" BorderBrush="Gray" BorderThickness="1,1,1,1" Height="50">
+                                        <TextBlock TextAlignment="Center" VerticalAlignment="Center">H<LineBreak/>[m]</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="2" Grid.Row="0" x:Name="member_table_Lcrx" Background="LightGray" BorderBrush="Gray" BorderThickness="1,1,1,1" Height="50">
+                                        <TextBlock TextAlignment="Center" VerticalAlignment="Center">Lcr,x
+                                        </TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="3" Grid.Row="0" x:Name="member_table_Lcry" Background="LightGray" BorderBrush="Gray" BorderThickness="1,1,1,1" Height="50">
+                                        <TextBlock TextAlignment="Center" VerticalAlignment="Center">Lcr,y
+                                        </TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="4" Grid.Row="0" x:Name="member_table_Bwy" Background="LightGray" BorderBrush="Gray" BorderThickness="1,1,1,1" Height="50">
+                                        <TextBlock TextAlignment="Center" VerticalAlignment="Center">Bw,y<LineBreak/>[m]</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="5" Grid.Row="0" x:Name="member_table_Bwx" Background="LightGray" BorderBrush="Gray" BorderThickness="1,1,1,1" Height="50">
+                                        <TextBlock TextAlignment="Center" VerticalAlignment="Center">Bw,x<LineBreak/>[m]</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="6" Grid.Row="0" x:Name="member_table_Bty" Background="LightGray" BorderBrush="Gray" BorderThickness="1,1,1,1" Height="50">
+                                        <TextBlock TextAlignment="Center" VerticalAlignment="Center">Bt,y<LineBreak/>[m]</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="7" Grid.Row="0" x:Name="member_table_Btx" Background="LightGray" BorderBrush="Gray" BorderThickness="1,1,1,1" Height="50">
+                                        <TextBlock TextAlignment="Center" VerticalAlignment="Center">Bt,x<LineBreak/>[m]</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="8" Grid.Row="0" x:Name="member_table_copy" Background="LightGray" BorderBrush="Gray" BorderThickness="1,1,1,1" Height="50">
+                                        <TextBlock TextAlignment="Center" VerticalAlignment="Center">Copy<LineBreak/>for all</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="9" Grid.Row="0" x:Name="member_table_delete" Background="LightGray" BorderBrush="Gray" BorderThickness="1,1,1,1" Height="50">
+                                        <TextBlock TextAlignment="Center" VerticalAlignment="Center">Delete</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="10" Grid.Row="0" Background="LightGray" BorderBrush="Gray" BorderThickness="1,1,1,1" Height="50">
+                                    </Border>
+                                </Grid>
+                                <ScrollViewer Height="300">
+                                    <StackPanel x:Name="table_members_content">
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </StackPanel>
+                        </TabItem.Content>
+                    </TabItem>
+                    <TabItem x:Name="tabLoads" Width="120">
+                        <TabItem.Header>
+                            <TextBlock TextAlignment="Center">Loads</TextBlock>
+                        </TabItem.Header>
+                        <TabItem.Content>
+                            <StackPanel Margin="20,20,20,0">
+                                <UniformGrid Rows="1" Columns="4">
+                                    <StackPanel Margin="0,10,10,0">
+                                        <TextBlock>Members</TextBlock>
+                                        <ComboBox Margin="0,10,0,0" VerticalContentAlignment="Center" x:Name="load_member" Height="30" VerticalAlignment="Top" SelectionChanged="loadMemberSelection">
+                                        </ComboBox>
+                                    </StackPanel>
+
+                                    <StackPanel Margin="10">
+                                        <Button x:Name="load_btn_copy_for_all" Click="loadCopyBtnFunc" Margin="0,28,0,0" Grid.Column="2" Grid.Row="0" Height="30" Width="Auto">
+                                            <StackPanel Orientation="Horizontal">
+                                                <Image Source="/img/copy.png" Height="16"/>
+                                                <TextBlock Text=" Copy For All" VerticalAlignment="Center" />
+                                            </StackPanel>
+                                        </Button>
+                                    </StackPanel>
+                                    <StackPanel>
+                                    </StackPanel>
+                                    <StackPanel Margin="0,10,0,0">
+                                        <Button Margin="0,28,0,0" Grid.Column="2" Grid.Row="0" Height="30" Width="Auto" Click="loadAddBtnFunc">
+                                            <StackPanel Orientation="Horizontal">
+                                                <Image Source="/img/add.png" Height="14"/>
+                                                <TextBlock Text=" Add Load" VerticalAlignment="Center" />
+                                            </StackPanel>
+                                        </Button>
+                                    </StackPanel>
+                                </UniformGrid>
+
+                                <Grid Margin="0,20,0,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition Width="17"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Border Grid.Column="0" Grid.Row="0" Background="LightGray" BorderBrush="Gray" BorderThickness="1,1,1,1" Height="30">
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">ID</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="1" Grid.Row="0" x:Name="load_table_header_load_type" Background="LightGray" BorderBrush="Gray" BorderThickness="1,1,1,1" Height="30">
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Load Type</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="2" Grid.Row="0" x:Name="load_table_header_load_way" Background="LightGray" BorderBrush="Gray" BorderThickness="1,1,1,1" Height="30">
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Load Way</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="3" Grid.Row="0" x:Name="load_table_header_load_value" Background="LightGray" BorderBrush="Gray" BorderThickness="1,1,1,1" Height="30">
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Value</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="4" Grid.Row="0" x:Name="load_table_header_load_ex" Background="LightGray" BorderBrush="Gray" BorderThickness="1,1,1,1" Height="30">
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">ex [mm]</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="5" Grid.Row="0" x:Name="load_table_header_load_ey" Background="LightGray" BorderBrush="Gray" BorderThickness="1,1,1,1" Height="30">
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">ey [mm]</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="6" Grid.Row="0" x:Name="load_table_header_load_shift" Background="LightGray" BorderBrush="Gray" BorderThickness="1,1,1,1" Height="30">
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">h [mm]</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="7" Grid.Row="0" x:Name="load_table_header_load_description" Background="LightGray" BorderBrush="Gray" BorderThickness="1,1,1,1" Height="30">
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Description</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="8" Grid.Row="0" x:Name="load_table_delete" Background="LightGray" BorderBrush="Gray" BorderThickness="1,1,1,1" Height="30">
+                                        <TextBlock TextAlignment="Center" VerticalAlignment="Center">Delete</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="9" Grid.Row="0" Background="LightGray" BorderBrush="Gray" BorderThickness="1,1,1,1" Height="30">
+                                    </Border>
+                                </Grid>
+                                <ScrollViewer Height="300">
+                                    <StackPanel x:Name="table_loads_content">
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </StackPanel>
+                        </TabItem.Content>
+                    </TabItem>
+                    <TabItem x:Name="tabLoadFactors" Width="120">
+                        <TabItem.Header>
+                            <TextBlock TextAlignment="Center">Load Comb.</TextBlock>
+                        </TabItem.Header>
+                        <TabItem.Content>
+                            <StackPanel Margin="20,20,20,0">
+                                <UniformGrid Rows="1" Columns="4">
+                                    <StackPanel Margin="0,10,0,0">
+                                    </StackPanel>
+                                    <StackPanel>
+                                    </StackPanel>
+                                    <StackPanel>
+                                    </StackPanel>
+                                    <StackPanel Margin="0,10,0,0">
+                                        <Button Margin="0,28,0,0" Grid.Column="2" Grid.Row="0" Height="30" Width="Auto" Click="comboAddBtnFunc">
+                                            <StackPanel Orientation="Horizontal">
+                                                <Image Source="/img/add.png" Height="14"/>
+                                                <TextBlock Text=" Add Combination" VerticalAlignment="Center" />
+                                            </StackPanel>
+                                        </Button>
+                                    </StackPanel>
+                                </UniformGrid>
+                                <Grid Margin="0,30,0,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition Width="17"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Border Grid.Column="0" Grid.Row="0" Background="LightGray" BorderBrush="Gray" BorderThickness="1,1,1,1" Height="30">
+                                        <TextBlock TextAlignment="Center" VerticalAlignment="Center">ID</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="1" Grid.Row="0" x:Name="combo_table_header_DL" Background="LightGray" BorderBrush="Gray" BorderThickness="1,1,1,1" Height="30">
+                                        <TextBlock TextAlignment="Center" VerticalAlignment="Center">Dead Load</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="2" Grid.Row="0" x:Name="combo_table_header_LL" Background="LightGray" BorderBrush="Gray" BorderThickness="1,1,1,1" Height="30">
+                                        <TextBlock TextAlignment="Center" VerticalAlignment="Center">Live Load</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="3" Grid.Row="0" x:Name="combo_table_header_WL" Background="LightGray" BorderBrush="Gray" BorderThickness="1,1,1,1" Height="30">
+                                        <TextBlock TextAlignment="Center" VerticalAlignment="Center">Wind Load</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="4" Grid.Row="0" x:Name="combo_table_header_SL" Background="LightGray" BorderBrush="Gray" BorderThickness="1,1,1,1" Height="30">
+                                        <TextBlock TextAlignment="Center" VerticalAlignment="Center">Snow Load</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="5" Grid.Row="0" x:Name="combo_table_header_Description" Background="LightGray" BorderBrush="Gray" BorderThickness="1,1,1,1" Height="30">
+                                        <TextBlock TextAlignment="Center" VerticalAlignment="Center">Description</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="6" Grid.Row="0" Background="LightGray" BorderBrush="Gray" BorderThickness="1,1,1,1" Height="30">
+                                        <TextBlock TextAlignment="Center" VerticalAlignment="Center">Delete</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="7" Grid.Row="0" Background="LightGray" BorderBrush="Gray" BorderThickness="1,1,1,1" Height="30">
+                                    </Border>
+                                </Grid>
+                                <ScrollViewer Height="300">
+                                    <StackPanel x:Name="table_combos_content">
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </StackPanel>
+                        </TabItem.Content>
+                    </TabItem>
+                    <TabItem x:Name="tabDesign" Width="120">
+                        <TabItem.Header>
+                            <TextBlock TextAlignment="Center">Design</TextBlock>
+                        </TabItem.Header>
+                        <TabItem.Content>
+                            <StackPanel Margin="20,20,20,0">
+                                <UniformGrid Rows="1" Columns="4">
+                                    <StackPanel Margin="0,10,10,0">
+                                        <TextBlock>Profile Database</TextBlock>
+                                        <ComboBox Margin="0,10,0,0" VerticalContentAlignment="Center" x:Name="profile_database" Height="30" VerticalAlignment="Top">
+                                            <ComboBoxItem Content="CFRHS"></ComboBoxItem>
+                                            <ComboBoxItem Content="HFRHS"></ComboBoxItem>
+                                        </ComboBox>
+                                    </StackPanel>
+                                    <StackPanel Margin="10">
+                                    </StackPanel>
+                                    <StackPanel Margin="0,10,5,0">
+                                        <Button Margin="0,28,0,0" Grid.Column="2" Grid.Row="0" Height="30" Width="Auto" Click="memberDesignBtnFunc">
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="Perform Design" VerticalAlignment="Center" />
+                                            </StackPanel>
+                                        </Button>
+                                    </StackPanel>
+                                    <StackPanel Margin="5,10,0,0">
+                                        <Button Margin="0,28,0,0" Grid.Column="2" Grid.Row="0" Height="30" Width="Auto">
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="Save Report" VerticalAlignment="Center" />
+                                            </StackPanel>
+                                        </Button>
+                                    </StackPanel>
+                                </UniformGrid>
+
+                                <Grid Margin="0,30,0,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition Width="17"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Border Grid.Column="0" Grid.Row="0" Background="LightGray" BorderBrush="Gray" BorderThickness="1,1,1,1" Height="50">
+                                        <TextBlock TextAlignment="Center" VerticalAlignment="Center">ID</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="1" Grid.Row="0" x:Name="design_table_header_member" Background="LightGray" BorderBrush="Gray" BorderThickness="1,1,1,1" Height="50">
+                                        <TextBlock TextAlignment="Center" VerticalAlignment="Center">Member</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="2" Grid.Row="0" x:Name="design_table_profile" Background="LightGray" BorderBrush="Gray" BorderThickness="1,1,1,1" Height="50">
+                                        <TextBlock TextAlignment="Center" VerticalAlignment="Center">Selected<LineBreak/>Profile</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="3" Grid.Row="0" x:Name="design_table_header_ut_strength" Background="LightGray" BorderBrush="Gray" BorderThickness="1,1,1,1" Height="50">
+                                        <TextBlock TextAlignment="Center" VerticalAlignment="Center">Utility<LineBreak/>Strength [%]</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="4" Grid.Row="0" x:Name="design_table_header_ut_fire" Background="LightGray" BorderBrush="Gray" BorderThickness="1,1,1,1" Height="50">
+                                        <TextBlock TextAlignment="Center" VerticalAlignment="Center">Utility<LineBreak/>Fire [%]</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="5" Grid.Row="0" x:Name="design_table_header_ut_deflection" Background="LightGray" BorderBrush="Gray" BorderThickness="1,1,1,1" Height="50">
+                                        <TextBlock TextAlignment="Center" VerticalAlignment="Center">Utility<LineBreak/>Defl. [%]</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="6" Grid.Row="0" x:Name="design_table_header_ut_status" Background="LightGray" BorderBrush="Gray" BorderThickness="1,1,1,1" Height="50">
+                                        <TextBlock TextAlignment="Center" VerticalAlignment="Center">Status</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="7" Grid.Row="0" x:Name="design_table_header_ut_report" Background="LightGray" BorderBrush="Gray" BorderThickness="1,1,1,1" Height="50">
+                                        <TextBlock TextAlignment="Center" VerticalAlignment="Center">Detail<LineBreak/>Report</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="8" Grid.Row="0" Background="LightGray" BorderBrush="Gray" BorderThickness="1,1,1,1" Height="50">
+                                    </Border>
+                                </Grid>
+                                <ScrollViewer Height="300">
+                                    <StackPanel x:Name="table_design_content">
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </StackPanel>
+                        </TabItem.Content>
+                    </TabItem>
+                </TabControl>
+
+            </Grid>
+
+        </Grid>
+    </DockPanel>
+
+
+</Window>
