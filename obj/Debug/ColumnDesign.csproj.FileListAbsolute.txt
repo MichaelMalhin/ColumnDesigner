@@ -1,0 +1,15 @@
+D:\WORK\ODDIN\Tekla design plugin\ColumnDesign\ColumnDesign\bin\Debug\ColumnDesign.exe.config
+D:\WORK\ODDIN\Tekla design plugin\ColumnDesign\ColumnDesign\bin\Debug\ColumnDesign.exe
+D:\WORK\ODDIN\Tekla design plugin\ColumnDesign\ColumnDesign\bin\Debug\ColumnDesign.pdb
+D:\WORK\ODDIN\Tekla design plugin\ColumnDesign\ColumnDesign\obj\Debug\MainWindow.g.cs
+D:\WORK\ODDIN\Tekla design plugin\ColumnDesign\ColumnDesign\obj\Debug\App.g.cs
+D:\WORK\ODDIN\Tekla design plugin\ColumnDesign\ColumnDesign\obj\Debug\ColumnDesign_MarkupCompile.cache
+D:\WORK\ODDIN\Tekla design plugin\ColumnDesign\ColumnDesign\obj\Debug\ColumnDesign_MarkupCompile.lref
+D:\WORK\ODDIN\Tekla design plugin\ColumnDesign\ColumnDesign\obj\Debug\MainWindow.baml
+D:\WORK\ODDIN\Tekla design plugin\ColumnDesign\ColumnDesign\obj\Debug\ColumnDesign.g.resources
+D:\WORK\ODDIN\Tekla design plugin\ColumnDesign\ColumnDesign\obj\Debug\ColumnDesign.Properties.Resources.resources
+D:\WORK\ODDIN\Tekla design plugin\ColumnDesign\ColumnDesign\obj\Debug\ColumnDesign.csproj.GenerateResource.cache
+D:\WORK\ODDIN\Tekla design plugin\ColumnDesign\ColumnDesign\obj\Debug\ColumnDesign.csproj.CoreCompileInputs.cache
+D:\WORK\ODDIN\Tekla design plugin\ColumnDesign\ColumnDesign\obj\Debug\ColumnDesign.exe
+D:\WORK\ODDIN\Tekla design plugin\ColumnDesign\ColumnDesign\obj\Debug\ColumnDesign.pdb
+D:\WORK\ODDIN\Tekla design plugin\ColumnDesign\ColumnDesign\obj\Debug\ColumnDesign.csproj.AssemblyReference.cache

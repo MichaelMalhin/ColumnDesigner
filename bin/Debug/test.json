@@ -1,0 +1,59 @@
+{
+    "profileDatabase": "CFRHS",
+    "optimizationCriteria": {
+        "MinSectionWidth": "0",
+        "MaxSectionWidth": "500",
+        "MinSectionHeight": "0",
+        "MaxSectionHeight": "500",
+        "MaxSectionWeight": "1000"
+    },
+    "designFactors": {
+        "gammaM0": "1.0",
+        "gammaM1": "1.0",
+        "DiflectionLimit": "300",
+        "AllowedUtilization": "100"
+    },
+    "material": {
+        "SteelGrade": "S355",
+        "ModulusE": "210000",
+        "ModulusG": "81000",
+        "Density": "76.98"
+    },
+    "members": [
+        {
+            "Height": 5,
+            "Ky": 1.0,
+            "Kz": 1.0,
+            "Loads": {
+                "PointLoads": [
+                    {
+                        "loadCase": "DL",
+                        "direction": "x",
+                        "magnitude": 20,
+                        "position": 5,
+                        "eccentricZ": 0,
+                        "eccentricY": 0
+                    }
+                ],
+                "LoadCombinations": [
+                    {
+                        "name": "1.35DL",
+                        "DL": "1.35",
+                        "LL": "0.0",
+                        "WLz": "0.0",
+                        "WLy": "0.0",
+                        "SL": "0.0"
+                    },
+                    {
+                        "name": "1.35DL+1.05LL+1.5WL",
+                        "DL": "1.35",
+                        "LL": "1.05",
+                        "WLz": "1.5",
+                        "WLy": "1.5",
+                        "SL": "0.0"
+                    }
+                ]
+            }
+        }
+    ]
+}
